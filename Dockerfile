@@ -10,7 +10,7 @@ COPY target/SpringBootEmailExamples-1.0.jar app.jar
 # Copy the image file into the container
 COPY src/main/resources/brthday.jpg brthday.jpg
 COPY src/main/resources/Msyslogo.jpg Msyslogo.jpg
-COPY src/main/resources/anniversary.jpg anniversary.jpg
+COPY src/main/resources/anniversary.png anniversary.png
 
 # Expose the port on which your Spring Boot application will run (adjust as needed)
 EXPOSE 8080
