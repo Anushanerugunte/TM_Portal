@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Msys Talent Management</title>
+    <link rel="icon" href="/images/Msyslogoicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff; /* Blue header background color */
+            color: #007bff; /* White text color */
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Add styles for the header image (logo) */
+        #header-logo {
+            width: 120px; /* Adjust the image width as needed */
+            height: auto; /* Auto height to maintain aspect ratio */
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+            padding: 0;
+        }
+        /* Center header content */
+        .header-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #f8f9fa; /* Light gray background color */
+            color: #333; /* Dark text color */
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .social-icons li {
+            display: inline-block;
+            margin-right: 10px; /* Adjust spacing between icons */
+        }
+
+        .social-icons a {
+            color: #333; /* Dark text color */
+            text-decoration: none;
+            font-size: 10px; /* Adjust icon size as needed */
+        }
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+     zoom: 90%;
+}
+.wave{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	z-index: -1;
+}
+.container{
+    margin-top: -60px;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap :7rem;
+    padding: 0 2rem;
+}
+.img{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.login-content{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	text-align: center;
+}
+.img img{
+	width: 500px;
+}
+form{
+	width: 360px;
+}
+.login-content img{
+    height: 100px;
+}
+.login-content h2{
+	margin: 15px 0;
+	color: #333;
+	text-transform: uppercase;
+	font-size: 2.9rem;
+}
+.login-content .input-div{
+	position: relative;
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 25px 0;
+    padding: 5px 0;
+    border-bottom: 3px solid #d9d9d9;
+}
+.login-content .input-div.one{
+	margin-top: 0;
+}
+.i{
+	color: #d9d9d9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.i i{
+	transition: .3s;
+}
+.input-div > div{
+    position: relative;
+	height: 45px;
+}
+.input-div > div > h5{
+	position: absolute;
+	left: 10px;
+	top: 60%;
+	transform: translateY(-70%);
+	color: #999;
+	font-size: 18px;
+	transition: .3s;
+}
+.input-div:before, .input-div:after{
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	width: 0%;
+	height: 2px;
+	background-color: #625bff;
+	transition: .4s;
+}
+.input-div:before{
+	right: 50%;
+}
+.input-div:after{
+	left: 50%;
+}
+.input-div.focus:before, .input-div.focus:after{
+	width: 50%;
+}
+.input-div.focus > div > h5{
+	top: -5px;
+	font-size: 15px;
+}
+.input-div.focus > .i > i{
+	color: #625bff;
+}
+.input-div > div > input{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+	background: none;
+	padding: 0.5rem 0.7rem;
+	font-size: 1.2rem;
+	color: #555;
+	font-family: 'poppins', sans-serif;
+}
+.input-div.pass{
+	margin-bottom: 4px;
+}
+a{
+	display: block;
+	text-align: right;
+	text-decoration: none;
+	color: #999;
+	font-size: 0.9rem;
+	transition: .3s;
+}
+a:hover{
+	color: #625bff;
+}
+.btn{
+	display: block;
+	width: 100%;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #625bff, #625bff, #625bff);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+}
+.btn:hover{
+	background-position: right;
+}
+
+
+@media screen and (max-width: 1050px){
+	.container{
+		grid-gap: 5rem;
+	}
+}
+
+@media screen and (max-width: 1000px){
+	form{
+		width: 290px;
+	}
+
+	.login-content h2{
+        font-size: 2.4rem;
+        margin: 8px 0;
+	}
+
+	.img img{
+		width: 400px;
+	}
+}
+
+@media screen and (max-width: 900px){
+	.container{
+		grid-template-columns: 1fr;
+	}
+
+	.img{
+		display: none;
+	}
+
+	.wave{
+		display: none;
+	}
+
+	.login-content{
+		justify-content: center;
+	}
+}
+
+
+
+
+html, body { height: 100%; }
+body {
+  background:radial-gradient(ellipse at center, rgba(255,254,234,1) 0%, rgba(255,254,234,1) 35%, #B7E8EB 100%);
+  overflow: hidden;
+}
+
+.ocean {
+  height: 5%;
+  width:100%;
+  position:absolute;
+  bottom:0;
+  left:0;
+  background: #015871;
+}
+
+.wave {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
+  position: absolute;
+  top: -198px;
+  width: 6400px;
+  height: 198px;
+  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+.wave:nth-of-type(2) {
+  top: -175px;
+  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
+  opacity: 1;
+}
+
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
+
+@keyframes swell {
+  0%, 100% {
+    transform: translate3d(0,-25px,0);
+  }
+  50% {
+    transform: translate3d(0,5px,0);
+  }
+}
+
+.img hr {
+    height: 100px; /* Set the height to 1px to create a thin line */
+    border:  1px solid #015871; /* Remove the border */
+    margin: 20px 0; /* Adjust the margin to control spacing around the line */
+
+}
+
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="ml-2">
+        <img src="/images/Msyslogo.jpg" alt="Company Logo" id="header-logo">
+    </div>
+    <div class="header-center">
+        <h1>Msys Talent Management </h1>
+    </div>
+
+</header>
+<div class="ocean">
+    <div class="wave"></div>
+    <div class="wave"></div>
+</div>
+<div class="container">
+    <div class="img">
+        <h2>MSys Technologies</h2>
+        <hr> <!-- Add the horizontal line here -->
+        <h5>&nbsp &nbsp Unlock Your Potential &nbsp &nbsp &nbsp with Us</h5>
+    </div>
+    <div class="login-content">
+        <form th:action="@{/login}" method="post">
+            <img src="/images/user.png" >
+            <h2 class="title">LOGIN</h2>
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="div">
+                    <h5>Username</h5>
+                    <input type="text" class="form-control" name="username" required>
+                </div>
+            </div>
+            <div class="input-div pass">
+                <div class="i">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="div">
+                    <h5>Password</h5>
+                    <input type="password" class="form-control" name="password"required>
+                </div>
+            </div>
+            <input type="submit" class="btn" value="Login">
+        </form>
+    </div>
+</div>
+<script>
+
+const inputs = document.querySelectorAll(".form-control");
+
+function AddClass() {
+    let parent = this.parentNode.parentNode;
+    parent.classList.add("focus");
+}
+
+function RemoveClass() {
+    let parent = this.parentNode.parentNode;
+    if (this.value === '' && this.getAttribute('placeholder') !== null) {
+        parent.classList.remove("focus");
+    }
+}
+
+inputs.forEach(input => {
+    input.addEventListener("focus", AddClass);
+    input.addEventListener("blur", RemoveClass);
+});
+
+
+</script>
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+            <img src="/images/Msyslogo.jpg" alt="Company Logo" width="30" height="24" class="mr-2">
+        </a>
+        <span class="mb-3 mb-md-0 text-body-secondary">MSys Technologies, LLC</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex social-icons">
+        <li><a class="text-body-secondary" href="https://twitter.com/MSys_Tech"><img src="/images/twitter-1.png" alt="Twitter" width="32" height="32"></a></li>
+        <li><a class="text-body-secondary" href="https://www.instagram.com/msys_technologies/?hl=en"><img src="/images/insta.png" alt="Instagram" width="32" height="32"></a></li>
+        <li><a class="text-body-secondary" href="https://www.facebook.com/MSysTechnologies/"><img src="/images/facebook-1.png" alt="Facebook" width="32" height="32"></a></li>
+    </ul>
+</footer>
+</body>
+</html>
