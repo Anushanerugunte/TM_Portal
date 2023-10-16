@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Employee data list</title>
+    <link rel="icon" href="/images/Msyslogoicon.png" type="image/png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <style>
+        /* Header Styles */
+        header {
+            background-color: #ffffff; /* White background color */
+            color: #555; /* Text color */
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            /* Ensure relative positioning for absolute child elements */
+            width: 100%; /* Set header width to 100% */
+            margin: 0; /* Remove any margin */
+        }
+
+        .container-fluid {
+            padding: 0;
+        }
+
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .row{
+        margin-right:0px
+        }
+
+        /* Add styles for the header image */
+        #header-image {
+            position: absolute;
+            top: 10px; /* Adjust the top position as needed */
+            left: 10px; /* Adjust the right position as needed */
+            bottom: 10px;
+            width: 120px; /* Adjust the image width as needed */
+            height: 60px; /* Maintain the aspect ratio */
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container Styles */
+        body {
+             zoom:90%;
+            background-image: url("/images/background.jpg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #000; /* Black text color */
+        }
+
+        /* Table Styles */
+        table {
+            margin-top: 25px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.7);
+            /* Semi-transparent white background */
+        }
+
+        th, td {
+            color: #000; /* Black text color */
+            font-weight: bold;
+        }
+
+        /* Table Header Styles */
+        th {
+            background-color: #007bff;
+            color: #fff; /* White text color */
+            font-size: 14px; /* Adjust the font size as needed */
+            padding: 4px 8px; /* Adjust the padding as needed */
+            line-height: 1; /* Reduce the line height to reduce cell height */
+        }
+
+        /* Table Row Styles */
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.5);
+            /* Semi-transparent white background for even rows */
+        }
+
+        /* Table Cell Styles */
+        td {
+            font-size: 12px; /* Adjust the font size as needed */
+            padding: 4px 8px; /* Adjust the padding as needed */
+            line-height: 1; /* Reduce the line height to reduce cell height */
+        }
+
+        /* Delete and Update Link Styles */
+        a {
+            color: #007bff; /* Blue link color */
+            text-decoration: none;
+        }
+
+        /* Delete and Update Icon Styles */
+        i {
+            font-size: 20px;
+            margin-left: 5px;
+        }
+
+        /* Left side dashboard panel */
+        .dashboard-panel {
+            background-color: #f8f9fa; /* Light gray background color */
+            padding: 20px;
+            min-height: 100vh;
+            /* Ensure it takes the full height of the viewport */
+            color: #000; /* Black text color */
+        }
+
+        /* Tab Content Styles */
+        .tab-content {
+            padding-top: 20px;
+        }
+
+        /* Adjust the style to stack tabs vertically */
+        .nav-tabs {
+            flex-direction: column;
+        }
+
+        .nav-tabs .nav-link {
+            margin-bottom: 10px;
+            color: #000; /* Black text color */
+            transition: background-color 0.3s;
+        }
+
+        /* Add responsive hover effect */
+        .nav-tabs .nav-link:hover {
+            background-color: #007bff; /* Blue background color on hover */
+            color: #fff; /* White text color on hover */
+        }
+
+        /* Additional Styles for the Form */
+        .form-container {
+            /* Add any additional styles you need for your form container */
+            width: 70%;
+            margin-top: 6.5%;
+        }
+         .nav-tabs .nav-link img {
+            vertical-align: middle;
+            margin-right: 5px; /* Add spacing between image and text */
+            }
+
+            .custom-tab {
+              background-color: #B9E7F7; /* Change the background color */
+              color: #fff; /* Change the text color */
+            }
+
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Header -->
+            <div class="col-md-12 pr-0">
+
+            <header>
+                <div>
+                    <h1>Add Employee data</h1>
+                    <img src="/images/Msyslogo.jpg" alt="Image Description" id="header-image">
+                </div>
+            </header>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Left side dashboard panel -->
+        <div class="col-md-2 dashboard-panel">
+            <h3 class="mb-4">Dashboard</h3>
+            <ul class="nav nav-tabs" id="myTabs" role="tablist">
+
+                <li class="nav-item">
+                    <a class="nav-link" id="Welcome-tab" href="/welcomepage" aria-selected="false">
+                        <img src="/images/welcome.png" alt="Welcome Icon" width="25" height="25">Welcome
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link " id="allemployee-tab" href="/getAllEmployees" aria-selected="true">
+                        <img src="/images/employeedetails1.png" alt="Employee Icon" width="25" height="25"> Employee Details
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="add-tab" href="/adding" aria-selected="false">
+                        <img src="/images/employeeadd.png" alt="Add Employee Icon" width="25" height="25"> Add Employee
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="update-tab" href="/updating" aria-selected="false">
+                        <img src="/images/employeeupdate.png" alt="Update Employee Icon" width="25" height="25"> Update Employee
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="delete-tab" href="/deleteing" aria-selected="false">
+                        <img src="/images/employeedelete.png" alt="Delete Employee Icon" width="25" height="25"> Delete Employee
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+        <!-- Right side content (employee details) -->
+        <div class="col-md-10 d-flex justify-content-center">
+            <div class="form-container">
+                <div id="container" style="text-align: center;">
+                    <!-- Message divs -->
+                    <div id="successMessage" th:if="${successMessage}" class="alert alert-success" style="display: none;">
+                        <p th:text="${successMessage}"></p>
+                    </div>
+
+                    <div id="errorMessage" th:if="${errorMessage}" class="alert alert-danger" style="display: none;">
+                        <p th:text="${errorMessage}"></p>
+                    </div>
+
+                    <div id="errorContainer" class="alert alert-danger" style="display: none;"></div>
+                </div>
+                <!-- Update the form action to use thymeleaf URL expression -->
+                <form th:action="@{/add-Inventryitems}" method="post" onsubmit="return validateForm()">
+                    <div class="form-group">
+                        <label for="employeeid">Employee Id</label>
+                        <input type="text" class="form-control" id="employeeid" name="employeeid" required pattern="[A-Za-z]\d*|[A-Za-z0-9]*" title="Employee ID should start with a letter followed by digits or contain only letters and/or numbers" placeholder="E.g., M20298, JohnDoe123, or 3456" onblur="validateEmployeeId()">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Employee Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required pattern="^(?!\s*$).+" title="Employee Name cannot be empty">
+                    </div>
+
+                    <!-- Joining Date -->
+                    <div class="form-group">
+                        <label for="joiningdate">Joining Date</label>
+                        <input type="text" class="form-control" id="joiningdate" name="joiningdate" required pattern="^\d{2}-\d{2}-\d{4}$" title="Enter a valid date in dd-mm-yyyy format" placeholder="dd-mm-yyyy" maxlength="10">
+                    </div>
+
+                    <!-- Birth Date -->
+                    <div class="form-group">
+                        <label for="birthdate">Birth Date</label>
+                        <input type="text" class="form-control" id="birthdate" name="birthdate" required pattern="^\d{2}-\d{2}-\d{4}$" title="Enter a valid date in dd-mm-yyyy format" placeholder="dd-mm-yyyy" maxlength="10">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Employee Email Id</label>
+                        <input type="text" class="form-control" id="email" name="email" required pattern="^(?!\s*$).+" title="Email Id cannot be empty">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reporting_manager">Reporting Manager Email Id</label>
+                        <input type="text" class="form-control" id="reporting_manager" name="reporting_manager" required pattern="^(?!\s*$).+" title="Reporting Manager Email Id cannot be empty">
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+
+ var messageContainer = document.getElementById("messageContainer");
+ var successMessage = document.getElementById("successMessage");
+ var errorMessage = document.getElementById("errorMessage");
+
+ if (successMessage) {
+ successMessage.style.display = "block";
+ setTimeout(function () {
+ successMessage.style.display = "none";
+ }, 2000); // Hide after 2 seconds
+ }
+
+ if (errorMessage) {
+ errorMessage.style.display = "block";
+ setTimeout(function () {
+ errorMessage.style.display = "none";
+ }, 2000); // Hide after 2 seconds
+ }
+ });
+</script>
+
+<script>
+function validateForm() {
+var joiningDateInput = document.getElementById("joiningdate");
+var birthDateInput = document.getElementById("birthdate");
+
+if (!isValidDate(joiningDateInput.value)) {
+joiningDateInput.classList.add("invalid-date");
+joiningDateInput.focus();
+displayErrorMessage("Invalid Joining Date. Please enter a valid date in dd-mm-yyyy format.");
+return false;
+} else {
+joiningDateInput.classList.remove("invalid-date");
+}
+
+if (!isValidDate(birthDateInput.value)) {
+birthDateInput.classList.add("invalid-date");
+birthDateInput.focus();
+displayErrorMessage("Invalid Birth Date. Please enter a valid date in dd-mm-yyyy format.");
+return false;
+} else {
+birthDateInput.classList.remove("invalid-date");
+}
+
+return true;
+}
+
+function displayErrorMessage(message) {
+var errorContainer = document.getElementById("errorContainer");
+errorContainer.innerText = message;
+errorContainer.style.display = "block";
+
+setTimeout(function () {
+errorContainer.style.display = "none";
+}, 2000); // Hide after 2 seconds
+}
+
+function isValidDate(dateString) {
+var datePattern = /^\d{2}-\d{2}-\d{4}$/;
+if (!datePattern.test(dateString)) {
+return false; // Invalid format
+}
+
+var parts = dateString.split('-');
+var day = parseInt(parts[0], 10);
+var month = parseInt(parts[1], 10);
+var year = parseInt(parts[2], 10);
+
+if (month < 1 || month > 12) {
+return false; // Invalid month
+}
+
+var maxDaysInMonth = new Date(year, month, 0).getDate();
+if (day < 1 || day > maxDaysInMonth) {
+return false; // Invalid day
+}
+
+if (year < 1900 || year > new Date().getFullYear()) {
+return false; // Invalid year
+}
+
+return true;
+}
+</script>
+</body>
+</html>
