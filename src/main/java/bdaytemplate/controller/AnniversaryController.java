@@ -38,7 +38,7 @@ public class AnniversaryController {
 		return "result";
 	}
 
-	@Scheduled(cron = "0 02 13 * * ?", zone = "Asia/Kolkata")
+	@Scheduled(cron = "0 02 12 * * ?", zone = "Asia/Kolkata")
 	public void sendHTMLEmailWithInlineImageDaily() throws MessagingException, IOException {
 		anniversaryService.sendEmailWithInlineImage();
 	}
