@@ -56,7 +56,7 @@ public class AppController {
         return "result";
     }
 
-    @Scheduled(cron = "0 2 13 * * ?", zone = "Asia/Kolkata")
+    @Scheduled(cron = "0 2 12 * * ?", zone = "Asia/Kolkata")
     public void sendHTMLEmailWithInlineImageDaily() throws MessagingException, IOException {
         emailService.sendEmailWithInlineImage();
     }
