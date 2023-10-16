@@ -53,8 +53,8 @@ public class AnniversaryController {
 	public ModelAndView saveEmployee(
 			@RequestParam("employeeid") String employeeid,
 			@RequestParam("name") String name,
-			@RequestParam("joiningdate") @DateTimeFormat(pattern = "dd-mm-yyyy") LocalDate joiningdate,
-			@RequestParam("birthdate") @DateTimeFormat(pattern = "dd-mm-yyyy") LocalDate birthdate,
+			@RequestParam("joiningdate") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate joiningdate,
+			@RequestParam("birthdate") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate birthdate,
 			@RequestParam("email") String email,
 			@RequestParam("reporting_manager") String reporting_manager) {
 
